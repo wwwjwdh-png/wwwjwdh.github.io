@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创新产品解决方案</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(120deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .section {
+            padding: 60px 40px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* 轮播图样式 */
+        .carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-control:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-control.prev {
+            left: 20px;
+        }
+        
+        .carousel-control.next {
+            right: 20px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        /* 视频区样式 */
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 400px;
+            background: #2c3e50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .video-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #6a11cb;
+        }
+        
+        .video-placeholder p {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* 引导区样式 */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            background: white;
+            color: #f5576c;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 二维码页面样式 */
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qr-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: modalFade 0.3s ease;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .qr-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: #f8f9fa;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+        
+        .qr-code i {
+            font-size: 5rem;
+            color: #6a11cb;
+        }
+        
+        .qr-description {
+            margin-bottom: 25px;
+            color: #666;
+        }
+        
+        .close-modal {
+            background: #6a11cb;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: #2575fc;
+            transform: translateY(-2px);
+        }
+        
+        /* GitHub Pages 指南样式 */
+        .guide-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+        
+        .guide-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .step-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .step-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #eee;
+        }
+        
+        .note {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .carousel-item {
+                height: 300px;
+            }
+            
+            .video-placeholder {
+                height: 250px;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>创新产品解决方案</h1>
+            <p class="subtitle">专为现代企业设计的智能平台，提升效率、优化流程、驱动增长</p>
+        </header>
+        
+        <section class="section">
+            <h2 class="section-title">产品展示</h2>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3')"></div>
+                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3')"></div>
+                    <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25856cd63?ixlib=rb-4.0.3')"></div>
+                </div>
+                <button class="carousel-control prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-control next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">产品介绍视频</h2>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>点击播放按钮观看产品介绍视频，了解我们的解决方案如何帮助您的业务增长</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section">
+            <h2 class="cta-title">立即体验产品</h2>
+            <p class="cta-description">扫描下方二维码，获取专属演示版本或联系我们的销售团队</p>
+            <a href="#" class="cta-button" id="showQR">获取二维码</a>
+        </section>
+        
+        <section class="section guide-section">
+            <h2 class="guide-title">GitHub Pages 托管指南</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">创建GitHub账户</h3>
+                    <p class="step-description">如果您还没有GitHub账户，请先访问 <a href="https://github.com" target="_blank">GitHub官网</a> 注册一个免费账户。</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">创建新仓库</h3>
+                    <p class="step-description">登录GitHub后，点击右上角"+"号，选择"New repository"。仓库名称必须为 <strong>username.github.io</strong>（username替换为您的GitHub用户名）。</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">上传HTML文件</h3>
+                    <p class="step-description">将本页面的HTML代码保存为<strong>index.html</strong>文件，然后上传到您创建的仓库中。</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">启用GitHub Pages</h3>
+                    <p class="step-description">进入仓库设置(Settings) → Pages → 选择"main"分支作为源 → 保存。</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">访问您的网站</h3>
+                    <p class="step-description">等待几分钟后，通过 <strong>https://username.github.io</strong> 访问您的网站。</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">自定义域名（可选）</h3>
+                    <p class="step-description">在Pages设置中添加您的自定义域名，并按照指引配置DNS记录。</p>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><strong>提示：</strong> GitHub Pages 完全免费，支持自定义域名，并且会自动启用HTTPS加密。您的网站将在每次代码更新后自动重新部署。</p>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 二维码弹窗 -->
+    <div class="qr-modal" id="qrModal">
+        <div class="qr-content">
+            <h3 class="qr-title">扫描二维码了解更多</h3>
+            <div class="qr-code">
+                <i class="fas fa-qrcode"></i>
+            </div>
+            <p class="qr-description">使用微信扫描二维码，获取产品演示或联系客服</p>
+            <button class="close-modal" id="closeModal">关闭</button>
+        </div>
+    </div>
+
+    <script>
+        // 轮播图功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselInner = document.querySelector('.carousel-inner');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const prevButton = document.querySelector('.carousel-control.prev');
+            const nextButton = document.querySelector('.carousel-control.next');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            
+            let currentIndex = 0;
+            const totalItems = carouselItems.length;
+            
+            function updateCarousel() {
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // 更新指示器状态
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            }
+            
+            // 添加事件监听
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+            
+            // 指示器点击事件
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // 自动轮播
+            let autoSlide = setInterval(nextSlide, 5000);
+            
+            // 鼠标悬停时暂停自动轮播
+            const carousel = document.querySelector('.carousel');
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(nextSlide, 5000);
+            });
+            
+            // 二维码弹窗功能
+            const showQRButton = document.getElementById('showQR');
+            const qrModal = document.getElementById('qrModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            showQRButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                qrModal.style.display = 'flex';
+            });
+            
+            closeModal.addEventListener('click', function() {
+                qrModal.style.display = 'none';
+            });
+            
+            // 点击模态框外部关闭
+            qrModal.addEventListener('click', function(e) {
+                if (e.target === qrModal) {
+                    qrModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
